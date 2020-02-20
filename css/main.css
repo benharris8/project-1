@@ -7,19 +7,19 @@ body {
 
 header {
   flex: 1;
-  background-color: red;
+  background-color: yellow;
   text-align: center;
   padding-top: 20px;
 }
 
 footer {
   flex: 1;
-  background-color: red;
+  background-color: yellow;
 }
 
 main {
   flex: 5;
-  background-color: blue;
+  background-color: black;
   display: flex;
 }
 
@@ -31,7 +31,7 @@ main {
 
 .grid {
   width: 10%;
-  border: 1px solid black;
+  border: 1px solid white;
 }
 
 .wall {

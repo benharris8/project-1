@@ -33,9 +33,9 @@ function runGame() {
   // functions
   function createBoard() {
     outerWalls();
-    drawHorizontalWall([2,2], 9);
+    drawHorizontalWall([2, 2], 9);
     drawHorizontalWall([12, 2], 9);
-    drawHorizontalWall([2,dimens - 3], 9);
+    drawHorizontalWall([2, dimens - 3], 9);
     drawHorizontalWall([12, dimens - 3], 9);
     drawVerticalWall([2, 2], 9);
     drawVerticalWall([2, 12], 9);
@@ -71,12 +71,18 @@ function runGame() {
       walls.push([i, 0]);
     }
     for (let i = 0; i < dimens; i++) {
+      if (i === Math.floor(dimens / 2)) {
+        continue;
+      }
       walls.push([dimens - 1, i]);
     }
     for (let i = dimens - 1; i !== 0; i--) {
       walls.push([i, dimens - 1]);
     }
     for (let i = dimens - 1; i !== 0; i--) {
+      if (i === Math.floor(dimens / 2)) {
+        continue;
+      }
       walls.push([0, i]);
     }
   }
