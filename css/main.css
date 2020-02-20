@@ -1,0 +1,66 @@
+body {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+}
+
+header {
+  flex: 1;
+  background-color: red;
+  text-align: center;
+  padding-top: 20px;
+}
+
+footer {
+  flex: 1;
+  background-color: red;
+}
+
+main {
+  flex: 5;
+  background-color: blue;
+  display: flex;
+}
+
+.row {
+  height: 10%;
+  display: flex;
+  flex-direction: row;
+}
+
+.grid {
+  width: 10%;
+  border: 1px solid black;
+}
+
+.wall {
+  background-color: grey;
+}
+
+#home-page {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 0 auto;
+}
+
+#start-button {
+  width: 100px;
+  height: 50px;
+}
+
+#game {
+  flex: 1;
+  display: none;
+  margin: 5px;
+}
+
+#game-board {
+  margin: 0 auto;
+  margin-top: 5vh;
+  height: 50vh;
+  width: 50vh;
+  display: flex;
+  flex-direction: column;
+}
