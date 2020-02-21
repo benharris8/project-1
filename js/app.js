@@ -27,7 +27,7 @@ function runGame() {
   const gameSpeed = 100;
   let pacmanCoord = [center[0], center[1] + 3];
   let pacmanDirection = 0;
-  let ghosts = [{ direction: 1, coord: [1, 1] },{ direction: 1, coord: [dimens - 2, dimens - 2] }];
+  let ghosts = [{ direction: 1, coord: [1, 1] }, { direction: 1, coord: [dimens - 2, dimens - 2] }];
 
   // main logic
 
@@ -74,23 +74,16 @@ function runGame() {
   }, gameSpeed);
 
   // ghost movement interval
-  const ghostInterval = setInterval(() => {
+  const sghostInterval = setInterval(() => {
     for (let i = 0; i < ghosts.length; i++) {
       const oldCoord = [];
       let currentCoord = ghosts[i]['coord'];
       oldCoord.push(currentCoord[0]);
       oldCoord.push(currentCoord[1]);
-      ghosts[i]['direction'] = directionToPacman(currentCoord);
-      console.log( ghosts[i]['direction'])
+      ghosts[i]['direction'] = directionToPacmanX(currentCoord);
       switch (ghosts[i]['direction']) {
-        case 0:
-          currentCoord[1] = currentCoord[1] - 1;
-          break;
         case 1:
           currentCoord[0] = currentCoord[0] + 1;
-          break;
-        case 2:
-          currentCoord[1] = currentCoord[1] + 1;
           break;
         case 3:
           currentCoord[0] = currentCoord[0] - 1;
@@ -104,7 +97,30 @@ function runGame() {
         ghosts[i]['coord'] = currentCoord;
       }
     }
-  }, gameSpeed);
+    for (let i = 0; i < ghosts.length; i++) {
+      const oldCoord = [];
+      let currentCoord = ghosts[i]['coord'];
+      oldCoord.push(currentCoord[0]);
+      oldCoord.push(currentCoord[1]);
+      ghosts[i]['direction'] = directionToPacmanY(currentCoord);
+      console.log(ghosts[i]['direction'])
+      switch (ghosts[i]['direction']) {
+        case 0:
+          currentCoord[1] = currentCoord[1] - 1;
+          break;
+        case 2:
+          currentCoord[1] = currentCoord[1] + 1;
+          break;
+      }
+      if (!checkWall(currentCoord)) {
+        ghosts[i]['coord'] = currentCoord;
+        redrawGhost(oldCoord, currentCoord);
+      } else {
+        currentCoord = oldCoord;
+        ghosts[i]['coord'] = currentCoord;
+      }
+    }
+  }, gameSpeed + 200);
 
   // event listeners
   window.addEventListener('keypress', (event) => {
@@ -127,16 +143,7 @@ function runGame() {
   // functions
   function createBoard() {
     outerWalls();
-    drawHorizontalWall([2, 2], 9);
-    drawHorizontalWall([12, 2], 9);
-    drawHorizontalWall([2, dimens - 3], 9);
-    drawHorizontalWall([12, dimens - 3], 9);
-    drawVerticalWall([2, 2], 9);
-    drawVerticalWall([2, 12], 9);
-    drawVerticalWall([dimens - 3, 2], 9);
-    drawVerticalWall([dimens - 3, 12], 9);
-
-
+    drawVerticalWall([Math.floor(dimens / 2), 2], dimens - 5)
     //loop through rows making a row div
     for (let j = 0; j < dimens; j++) {
       const rowDiv = document.createElement('div');
@@ -237,14 +244,23 @@ function runGame() {
     }
   }
 
-  function directionToPacman(point) {
+  function directionToPacmanX(point) {
     const pacmanPoint = findPacman();
     const xLarger = point[0] > pacmanPoint[0];
-    const yLarger = point[1] > pacmanPoint[1];
     if (!xLarger) {
       return 1;
     } else if (xLarger) {
       return 3;
+    }
+  }
+
+  function directionToPacmanY(point) {
+    const pacmanPoint = findPacman();
+    const yLarger = point[1] > pacmanPoint[1];
+    if (!yLarger) {
+      return 2;
+    } else if (yLarger) {
+      return 0;
     }
   }
 
