@@ -27,11 +27,9 @@ function runGame() {
   const gameSpeed = 100;
   let pacmanCoord = [center[0], center[1] + 3];
   let pacmanDirection = 0;
-  let ghosts = [{ direction: 1, coord: [1, 1] }, { direction: 1, coord: [dimens - 2, dimens - 2] }];
+  let ghosts = [{ direction: 1, coord: [1, 1] }, { direction: 1, coord: [dimens - 2, dimens - 2] }, { direction: 1, coord: [dimens - 10, dimens - 10] }];
 
   // main logic
-
-
 
   // pacman movement control based on direction
   const pacmanInterval = setInterval(() => {
@@ -74,7 +72,7 @@ function runGame() {
   }, gameSpeed);
 
   // ghost movement interval
-  const sghostInterval = setInterval(() => {
+  const ghostInterval = setInterval(() => {
     for (let i = 0; i < ghosts.length; i++) {
       const oldCoord = [];
       let currentCoord = ghosts[i]['coord'];
@@ -103,7 +101,6 @@ function runGame() {
       oldCoord.push(currentCoord[0]);
       oldCoord.push(currentCoord[1]);
       ghosts[i]['direction'] = directionToPacmanY(currentCoord);
-      console.log(ghosts[i]['direction'])
       switch (ghosts[i]['direction']) {
         case 0:
           currentCoord[1] = currentCoord[1] - 1;
@@ -143,7 +140,18 @@ function runGame() {
   // functions
   function createBoard() {
     outerWalls();
-    drawVerticalWall([Math.floor(dimens / 2), 2], dimens - 5)
+    drawVerticalWall([2, 2], Math.floor(dimens / 2) - 2);
+    drawVerticalWall([2, Math.floor(dimens / 2) + 1], Math.floor(dimens / 2) - 2);
+    drawVerticalWall([dimens - 3, 2], Math.floor(dimens / 2) - 2);
+    drawVerticalWall([dimens - 3, Math.floor(dimens / 2) + 1], Math.floor(dimens / 2) - 2);
+    drawVerticalWall([4, 4], dimens - 8);
+    drawVerticalWall([dimens - 5, 4], dimens - 8);
+    drawVerticalWall([6, 6], Math.floor(dimens / 2) - 6);
+    drawVerticalWall([6, Math.floor(dimens / 2) + 1], Math.floor(dimens / 2) - 6);
+    drawVerticalWall([dimens - 7, 6], Math.floor(dimens / 2) - 6);
+    drawVerticalWall([dimens - 7, Math.floor(dimens / 2) + 1], Math.floor(dimens / 2) - 6);
+
+
     //loop through rows making a row div
     for (let j = 0; j < dimens; j++) {
       const rowDiv = document.createElement('div');
