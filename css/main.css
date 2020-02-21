@@ -42,6 +42,10 @@ main {
   background-color: red;
 }
 
+.ghost {
+  background-color: magenta;
+}
+
 #home-page {
   display: flex;
   flex-direction: column;
