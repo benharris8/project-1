@@ -19,7 +19,7 @@ footer {
 
 main {
   flex: 5;
-  background-color: black;
+  background-color: blue;
   display: flex;
 }
 
@@ -31,11 +31,15 @@ main {
 
 .grid {
   width: 10%;
-  border: 1px solid white;
+  border: 1px solid black;
 }
 
 .wall {
   background-color: grey;
+}
+
+.pacman-open {
+  background-color: red;
 }
 
 #home-page {

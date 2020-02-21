@@ -23,12 +23,55 @@ function runGame() {
   // variable definitions
   const dimens = 23;
   const walls = [];
-
+  const center = [Math.floor(dimens / 2), Math.floor(dimens / 2)];
+  let pacmanCoord = [center[0], center[1] + 3];
+  console.log(pacmanCoord)
+  let direction = 0;
   // main logic
-
+  const pacmanInterval = setInterval(() => {
+    // console.log(pacmanCoord)
+    const oldCoord = [];
+    oldCoord.push(pacmanCoord[0])
+    oldCoord.push(pacmanCoord[1])
+    
+    switch (direction) {
+      case 0:
+        pacmanCoord[1] = pacmanCoord[1] - 1;
+        break;
+      case 1:
+        pacmanCoord[0] = pacmanCoord[0] + 1;
+        break;
+      case 2:
+        pacmanCoord[1] = pacmanCoord[1] + 1;
+        break;
+      case 3:
+        pacmanCoord[0] = pacmanCoord[0] - 1;
+        break;
+    }
+    if(!checkWall(pacmanCoord)){
+      movePacman(oldCoord, pacmanCoord);
+    } else {
+      pacmanCoord = oldCoord;
+    }
+  }, 100);
 
   // event listeners
-
+  window.addEventListener('keypress', (event) => {
+    switch (event.key) {
+      case 'w':
+        direction = 0;
+        break;
+      case 'd':
+        direction = 1;
+        break;
+      case 's':
+        direction = 2;
+        break;
+      case 'a':
+        direction = 3;
+        break;
+    }
+  });
 
   // functions
   function createBoard() {
@@ -41,6 +84,7 @@ function runGame() {
     drawVerticalWall([2, 12], 9);
     drawVerticalWall([dimens - 3, 2], 9);
     drawVerticalWall([dimens - 3, 12], 9);
+
 
     //loop through rows making a row div
     for (let j = 0; j < dimens; j++) {
@@ -59,11 +103,12 @@ function runGame() {
         }
 
         //set the x and y coords as attributes for reference later
-        gridDiv.setAttribute('x', j);
-        gridDiv.setAttribute('y', i);
+        gridDiv.setAttribute('x', i);
+        gridDiv.setAttribute('y', j);
         rowDiv.append(gridDiv);
       }
     }
+    spawnPacman();
   }
 
   function outerWalls() {
@@ -102,6 +147,39 @@ function runGame() {
 
     for (let i = 0; i < value; i++) {
       walls.push([pointX + i, pointY]);
+    }
+  }
+
+  function spawnPacman() {
+    const spawnDiv = getDivFromCoord(pacmanCoord);
+    spawnDiv.classList.add('pacman-open');
+    // console.log(spawnDiv)
+  }
+
+  function movePacman(oldPoint, point) {
+    const oldDiv = getDivFromCoord(oldPoint);
+    // console.log(oldDiv.classList)
+    const newDiv = getDivFromCoord(point);
+    // console.log('new: ' + newDiv.classList)
+    oldDiv.classList.remove('pacman-open');
+    newDiv.classList.add('pacman-open');
+  }
+
+  function checkWall(point) {
+    const newDiv = getDivFromCoord(point);
+    return (newDiv.classList.contains('wall') ? true : false);
+  }
+
+  // function checks every ele with grid class and checks their x and y against input values
+  // then returns the match
+  function getDivFromCoord(point) {
+    const gridElements = document.querySelectorAll('.grid');
+    for (let i = 0; i < gridElements.length; i++) {
+      const xCoord = parseInt(gridElements[i].getAttribute('x'));
+      const yCoord = parseInt(gridElements[i].getAttribute('y'));
+      if ((xCoord === point[0]) && (yCoord === point[1])) {
+        return gridElements[i];
+      }
     }
   }
 
