@@ -140,17 +140,7 @@ function runGame() {
   // functions
   function createBoard() {
     outerWalls();
-    drawVerticalWall([2, 2], Math.floor(dimens / 2) - 2);
-    drawVerticalWall([2, Math.floor(dimens / 2) + 1], Math.floor(dimens / 2) - 2);
-    drawVerticalWall([dimens - 3, 2], Math.floor(dimens / 2) - 2);
-    drawVerticalWall([dimens - 3, Math.floor(dimens / 2) + 1], Math.floor(dimens / 2) - 2);
-    drawVerticalWall([4, 4], dimens - 8);
-    drawVerticalWall([dimens - 5, 4], dimens - 8);
-    drawVerticalWall([6, 6], Math.floor(dimens / 2) - 6);
-    drawVerticalWall([6, Math.floor(dimens / 2) + 1], Math.floor(dimens / 2) - 6);
-    drawVerticalWall([dimens - 7, 6], Math.floor(dimens / 2) - 6);
-    drawVerticalWall([dimens - 7, Math.floor(dimens / 2) + 1], Math.floor(dimens / 2) - 6);
-
+    level1();
 
     //loop through rows making a row div
     for (let j = 0; j < dimens; j++) {
@@ -176,6 +166,33 @@ function runGame() {
     }
     spawnGhost([1, 1]);
     spawnPacman();
+  }
+
+  function level1() {
+    drawVerticalWall([2, 2], Math.floor(dimens / 2) - 2);
+    drawVerticalWall([2, Math.floor(dimens / 2) + 1], Math.floor(dimens / 2) - 2);
+    drawVerticalWall([4, 4], dimens - 8);
+    drawVerticalWall([6, 6], Math.floor(dimens / 2) - 6);
+    drawVerticalWall([6, Math.floor(dimens / 2) + 1], Math.floor(dimens / 2) - 6);
+    drawVerticalWall([8, 8], Math.floor(dimens / 2) - 4);
+    drawVerticalWall([dimens - 5, 4], dimens - 8);
+    drawVerticalWall([dimens - 3, 2], Math.floor(dimens / 2) - 2);
+    drawVerticalWall([dimens - 3, Math.floor(dimens / 2) + 1], Math.floor(dimens / 2) - 2);
+    drawVerticalWall([dimens - 7, 6], Math.floor(dimens / 2) - 6);
+    drawVerticalWall([dimens - 7, Math.floor(dimens / 2) + 1], Math.floor(dimens / 2) - 6);
+    drawVerticalWall([dimens - 9, 8], Math.floor(dimens / 2) - 4);
+    drawHorizontalWall([2, 2], dimens - 4);
+    drawHorizontalWall([2, dimens - 3], dimens - 4);
+    drawHorizontalWall([6, 6], dimens - 12);
+    drawHorizontalWall([6, dimens - 7], dimens - 12);
+    drawHorizontalWall([4, 4], dimens / 2 - 5);
+    drawHorizontalWall([4, dimens - 5], dimens / 2 - 5);
+    drawHorizontalWall([Math.floor(dimens / 2) + 1, 4], dimens / 2 - 5);
+    drawHorizontalWall([Math.floor(dimens / 2) + 1, dimens - 5], dimens / 2 - 5);
+    drawHorizontalWall([8, 8], dimens / 2 - 9);
+    drawHorizontalWall([Math.floor(dimens / 2) + 1, 8], dimens / 2 - 9);
+    drawHorizontalWall([8, dimens - 9], dimens / 2 - 9);
+    drawHorizontalWall([Math.floor(dimens / 2) + 1, dimens - 9], dimens / 2 - 9);
   }
 
   function outerWalls() {
@@ -308,6 +325,19 @@ function runGame() {
     const xCoord = parseInt(div.getAttribute('x'));
     const yCoord = parseInt(div.getAttribute('y'));
     return [xCoord, yCoord];
+  }
+
+  function checkCorner(ghost) {
+    switch (ghost.direction) {
+      case 0:
+        break;
+      case 1:
+        break;
+      case 2:
+        break;
+      case 3:
+        break;
+    }
   }
 
   createBoard();
