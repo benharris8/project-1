@@ -7,20 +7,32 @@ body {
 
 header {
   flex: 1;
-  background-color: yellow;
+  background-color: black;
   text-align: center;
+  color: white;
   padding-top: 20px;
 }
 
 footer {
   flex: 1;
-  background-color: yellow;
+  background-color: black;
 }
 
 main {
   flex: 5;
-  background-color: blue;
+  background-color: grey;
   display: flex;
+}
+
+form {
+  display: flex;
+  flex: 2;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.read {
+  background-color: green;
 }
 
 .row {
@@ -35,15 +47,27 @@ main {
 }
 
 .wall {
-  background-color: grey;
+  background-color: rgb(114, 9, 53);
 }
 
-.pacman-open {
+.pacman {
   background-color: red;
+}
+
+div.ghost {
+  background-image: none;
 }
 
 .ghost {
   background-color: magenta;
+  background-image: none;
+}
+
+.point {
+  background-image: url('../img/point.png');
+  background-size: cover;
+  background-position: center;
+  /* opacity: 0.5; */
 }
 
 #home-page {
@@ -54,8 +78,8 @@ main {
 }
 
 #start-button {
-  width: 100px;
-  height: 50px;
+  flex: 1;
+  margin-bottom: 20vh;
 }
 
 #game {
