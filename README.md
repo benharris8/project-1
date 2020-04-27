@@ -35,4 +35,5 @@ Pacman has a direction variable which controls which coordinate is continuously 
 
 The ghosts have the A* logic and will continuously generate an array of coordinates which is the shortest possible route to Pacman. They will then move to the first coordinate and regenerate the list.
 
+I had to write a lot of helper functions in order to work with Arrays in Javascript effectively. 
 
