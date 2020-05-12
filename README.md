@@ -2,6 +2,8 @@
 
 # Pac Man
 
+by [Ben Harris](https://github.com/benharris8)
+
 ## Table of Contents
 1. [Overview](#Overview)
 2. [Technologies Used](#Technologies-Used)
