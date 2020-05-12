@@ -154,7 +154,25 @@ The ghosts have the A* logic and will continuously generate an array of coordina
 
 ```
 
-I had to write a lot of helper functions in order to work with Arrays in Javascript effectively.
+I had to write a lot of helper functions in order to work with arrays in Javascript effectively.
+For example I needed to be able to check if two coordinates were the same and, as JavaScript doesn't see two of the same array as equal I had to write a function which looped through each array to check if they were the same.
+
+```js
+var arraysMatch = function (arr1, arr2) {
+
+  // Check if the arrays are the same length
+  if (arr1.length !== arr2.length) return false;
+
+  // Check if all items exist and are in the same order
+  for (var i = 0; i < arr1.length; i++) {
+    if (arr1[i] !== arr2[i]) return false;
+  }
+
+  // Otherwise, return true
+  return true;
+
+}
+```
 
 # Screenshots
 ![ALTTEXT](imageurl)
@@ -162,6 +180,7 @@ I had to write a lot of helper functions in order to work with Arrays in Javascr
 # Challenges
 I had to do a lot of type conversions and helper functions in order to complete this project due to how JavaScript treats object keys.
 The main example of this is from the final path generation. Initially the path is an object with a co-ordinate as the value and the co-ordinate that value "came from" in the path as it's key. 
+
 JavaScript only allows strings as keys so I had to split the full path object into an array of key pairs and then convert each co-ordinate into integers using helper functions.
 
 ```js
