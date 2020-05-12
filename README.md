@@ -145,7 +145,7 @@ The ghosts have the A* logic and will continuously generate an array of coordina
     }
   }
 
-````
+```
 
 I had to write a lot of helper functions in order to work with Arrays in Javascript effectively.
 
@@ -177,8 +177,11 @@ Furthermore this method of implementing A Star whilst manipulating the DOM at th
 
 # Potential Future Features
 Since completing this project I have learned much more about programming and specifically about CSS and design. 
+
 I would first start with making the site a lot more appealing to look at and would then add more game features such as different levels of increasing difficulty.
+
 Eventually I would add the option for the user to create their own levels by clicking on squares to draw walls.
 
 # Lessons Learned
-Manipulating the DOM so frequently is very costly and can lead to the application lagging if done too often.
+- Manipulating the DOM so frequently is very costly and can lead to the application lagging if done too often.
+- Allow for more time to make the finished product look nice and presentable.
