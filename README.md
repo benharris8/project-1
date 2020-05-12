@@ -74,17 +74,20 @@ The ghosts have the A* logic and will continuously generate an array of coordina
     const openList = [start];
     const pacmanCoord = findPacman();
     const h = (current) => {
-        // manhattenDist is a helper function which calculates the shortest path between two points regardless of obstacles
+        // manhattenDist is a helper function which calculates
+        // the shortest path between two points regardless of obstacles
       return manhattanDist(current, pacmanCoord);
     }
 
     // "start" is the ghost's starting coordinate
     const gScore = new Map();
-    // the gScore for the starting coordinate is 0 because it is the first coordinate of the path, no jumps have been made yet.
+    // the gScore for the starting coordinate is 0 because it is the
+    // first coordinate of the path, no jumps have been made yet.
     gScore[start] = 0;
 
     const fScore = new Map();
-    // the fScore is equal to the hScore for the starting coordinate because fScore = hScore + gScore and gScore is 0 for the starting coordinate.
+    // the fScore is equal to the hScore for the starting coordinate 
+    // because fScore = hScore + gScore and gScore is 0 for the starting coordinate.
     fScore[start] = h(start);
 
     const cameFrom = new Map();
@@ -101,7 +104,8 @@ The ghosts have the A* logic and will continuously generate an array of coordina
       let current = openList[0];
       for (let i = openList.length - 1; i >= 0; i--) {
         if (fScore[openList[i]] < fScore[current]) {
-        //resort the list of open nodes based on the fScore and reassign the node currently being read to the lowest fScore
+        //resort the list of open nodes based on the fScore and reassign the 
+        // node currently being read to the lowest fScore
           current = openList[i];
         }
       }
@@ -116,15 +120,18 @@ The ghosts have the A* logic and will continuously generate an array of coordina
       }
       // Remove the current node from the list of open nodes
       openList.splice(openList.indexOf(current), 1);
-      // Find the node's neighbours. This is a helper function which only returns the neighbours if they do not have the 'wall' CSS class.
+      // Find the node's neighbours. This is a helper function which only returns 
+      // the neighbours if they do not have the 'wall' CSS class.
       const neighbours = this.findNeighbours(current);
       for (let i = 0; i < neighbours.length; i++) {
-        // add one to the gScore as a jump has been made which adds 1 to the number of nodes read on this path.
+        // add one to the gScore as a jump has been made which adds 1 to the number 
+        //of nodes read on this path.
         const tentativeGscore = gScore[current] + 1;
         // get each neighbour and assign it's fScore. Add to the list of open nodes.
         const neighbour = neighbours[i];
 
-        // if the node is new and has no gScore then temporarily make the fScore and gScore infinite so that they pass the very first check.
+        // if the node is new and has no gScore then temporarily make the fScore and 
+        // gScore infinite so that they pass the very first check.
         if (gScore[neighbour] === undefined) {
           gScore[neighbour] = Infinity;
           fScore[neighbour] = Infinity;
