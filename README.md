@@ -177,7 +177,7 @@ var arraysMatch = function (arr1, arr2) {
 ```
 
 # Screenshots
-![ALTTEXT](imageurl)
+![Pac Man](pacman screenshot.PNG)
 
 # Challenges
 I had to do a lot of type conversions and helper functions in order to complete this project due to how JavaScript treats object keys.
