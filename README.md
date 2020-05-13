@@ -7,7 +7,7 @@ by [Ben Harris](https://github.com/benharris8)
 ## Table of Contents
 1. [Overview](#Overview)
 2. [Technologies Used](#Technologies-Used)
-3. [A Star Search Algorithms](#A-Star-Search-Algorithms)
+3. [A-Star Search Algorithms](#A-Star-Search-Algorithms)
 4. [Implementation](#Implementation)
 5. [Screenshots](#Screenshots)
 6. [Challenges](#Challenges)
@@ -16,13 +16,13 @@ by [Ben Harris](https://github.com/benharris8)
 
 
 # Overview
-This was a week long solo project for which I created an implementation of Pac Man using an A Star pathing algorithm for the ghost AI.
+This was a week long solo project for which I created an implementation of Pac Man using an A-Star pathing algorithm for the ghost AI.
 
 # Technologies Used
 - JavaScript
 - HTML5/CSS3
 
-# A Star Search Algorithms
+# A-Star Search Algorithms
 An A* search is an algorithm which finds the shortest possible path between two points regardless of any objects seperating them. The first step is to work out the Manhattan distance between the two points which is done using the basic distance between two points formula.
 
 ### sqrt(p(x2 − x1)^2 + (y2 − y1)^2)
@@ -201,7 +201,7 @@ function stringCoordToInt(string) {
 }
 ```
 
-Furthermore this method of implementing A Star whilst manipulating the DOM at the same time is very costly. The application lags when the ghosts have to search too far to find Pac Man.
+Furthermore this method of implementing A-Star whilst manipulating the DOM at the same time is very costly. The application lags when the ghosts have to search too far to find Pac Man.
 
 # Potential Future Features
 Since completing this project I have learned much more about programming and specifically about CSS and design. 
