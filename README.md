@@ -23,7 +23,7 @@ This was a week long solo project for which I created an implementation of Pac M
 - HTML5/CSS3
 
 # A-Star Search Algorithms
-An A* search is an algorithm which finds the shortest possible path between two points regardless of any objects seperating them. The first step is to work out the Manhattan distance between the two points which is done using the basic distance between two points formula.
+An A* search is an algorithm which finds the shortest possible path between two points regardless of any objects separating them. The first step is to work out the Manhattan distance between the two points which is done using the basic distance between two points formula.
 
 ### sqrt(p(x2 − x1)^2 + (y2 − y1)^2)
 
@@ -69,7 +69,7 @@ I contained all of the game board logic to a board class and had Pac Man and Gho
 
 Pac Man has a direction variable which controls which coordinate is continuously iterated as Pac Man needs to continuously move. The direction is changed with event listeners listening for wasd key presses.
 
-The ghosts have the A* logic and will continuously generate an array of coordinates which is the shortest possible route to Pac Man. They will then move to the first coordinate and regenerate the list.
+The ghosts have the A* logic and will continuously generate an array of coordinates, which is the shortest possible route to Pac Man. They will then move to the first coordinate and regenerate the list.
 
 ```js
   pathToPacman(start) {
@@ -157,7 +157,7 @@ The ghosts have the A* logic and will continuously generate an array of coordina
 ```
 
 I had to write a lot of helper functions in order to work with arrays in Javascript effectively.
-For example I needed to be able to check if two coordinates were the same and, as JavaScript doesn't see two of the same array as equal I had to write a function which looped through each array to check if they were the same.
+For example, I needed to be able to check if two coordinates were the same and, as JavaScript doesn't see two of the same array as equal, I had to write a function which looped through each array to check if they were the same.
 
 ```js
 var arraysMatch = function (arr1, arr2) {
@@ -181,9 +181,9 @@ var arraysMatch = function (arr1, arr2) {
 
 # Challenges
 I had to do a lot of type conversions and helper functions in order to complete this project due to how JavaScript treats object keys.
-The main example of this is from the final path generation. Initially the path is an object with a co-ordinate as the value and the co-ordinate that value "came from" in the path as it's key. 
+The main example of this is from the final path generation. Initially, the path is an object with a co-ordinate as the value and the co-ordinate that value "came from" in the path as it's key. 
 
-JavaScript only allows strings as keys so I had to split the full path object into an array of key pairs and then convert each co-ordinate into integers using helper functions.
+JavaScript only allows strings as keys, so I had to split the full path object into an array of key pairs and then convert each co-ordinate value into an integer using helper functions.
 
 ```js
 for (let i = 0; i < Object.entries(cameFrom).length - 1; i++) {
@@ -204,12 +204,12 @@ function stringCoordToInt(string) {
 Furthermore this method of implementing A-Star whilst manipulating the DOM at the same time is very costly. The application lags when the ghosts have to search too far to find Pac Man.
 
 # Potential Future Features
-Since completing this project I have learned much more about programming and specifically about CSS and design. 
+Since completing this project, I have learned much more about programming and specifically about CSS and design. 
 
 I would first start with making the site a lot more appealing to look at and would then add more game features such as different levels of increasing difficulty.
 
 Eventually I would add the option for the user to create their own levels by clicking on squares to draw walls.
 
 # Lessons Learned
-- Manipulating the DOM so frequently is very costly and can lead to the application lagging if done too often.
-- Allow for more time to make the finished product look nice and presentable.
+- Manipulating the DOM frequently is very costly and can lead to the application lagging if done too often.
+- Allow for more time to make the finished product look nicer and more presentable.
